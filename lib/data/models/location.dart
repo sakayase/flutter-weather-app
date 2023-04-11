@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'location.g.dart';
@@ -5,20 +6,21 @@ part 'location.g.dart';
 @JsonSerializable()
 class Location {
   Location({
-    required this.name,
-    required this.region,
-    required this.country,
-    required this.localTimeEpoch,
+    this.name,
+    this.region,
+    this.country,
+    this.localTimeEpoch,
+    required this.lat,
+    required this.lon,
   });
 
-  @JsonKey(name: 'name')
-  String name;
-  @JsonKey(name: 'region')
-  String region;
-  @JsonKey(name: 'country')
-  String country;
+  String? name;
+  String? region;
+  String? country;
   @JsonKey(name: 'localtime_epoch')
-  String localTimeEpoch;
+  String? localTimeEpoch;
+  double lat;
+  double lon;
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);

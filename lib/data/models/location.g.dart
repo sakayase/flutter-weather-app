@@ -7,10 +7,12 @@ part of 'location.dart';
 // **************************************************************************
 
 Location _$LocationFromJson(Map<String, dynamic> json) => Location(
-      name: json['name'] as String,
-      region: json['region'] as String,
-      country: json['country'] as String,
-      localTimeEpoch: json['localtime_epoch'] as String,
+      name: json['name'] as String?,
+      region: json['region'] as String?,
+      country: json['country'] as String?,
+      localTimeEpoch: json['localtime_epoch'] as String?,
+      lat: (json['lat'] as num).toDouble(),
+      lon: (json['lon'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
@@ -18,4 +20,6 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'region': instance.region,
       'country': instance.country,
       'localtime_epoch': instance.localTimeEpoch,
+      'lat': instance.lat,
+      'lon': instance.lon,
     };
