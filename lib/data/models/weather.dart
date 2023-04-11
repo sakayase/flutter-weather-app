@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/data/models/condition.dart';
 import 'package:weather_app/data/models/location.dart';
+import 'package:weather_app/foundation/utils.dart';
 
 part 'weather.g.dart';
 
@@ -17,6 +18,7 @@ class Weather {
     required this.celciusFeelsLike,
     required this.farenheitFeelsLike,
     required this.condition,
+    required this.isDay,
     this.hours,
   });
 
@@ -40,6 +42,8 @@ class Weather {
   double farenheitFeelsLike;
   @JsonKey(readValue: readWeather)
   Condition condition;
+  @JsonKey(name: 'is_day', readValue: readWeather, fromJson: intToBool)
+  bool isDay;
   List<Weather>? hours;
 
   static readWeather(Map map, String string) {

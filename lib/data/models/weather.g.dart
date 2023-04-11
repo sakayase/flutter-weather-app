@@ -21,6 +21,7 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
           (Weather.readWeather(json, 'feelslike_f') as num).toDouble(),
       condition: Condition.fromJson(
           Weather.readWeather(json, 'condition') as Map<String, dynamic>),
+      isDay: intToBool(Weather.readWeather(json, 'is_day') as int),
       hours: (json['hours'] as List<dynamic>?)
           ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -37,5 +38,6 @@ Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
       'feelslike_c': instance.celciusFeelsLike,
       'feelslike_f': instance.farenheitFeelsLike,
       'condition': instance.condition,
+      'is_day': instance.isDay,
       'hours': instance.hours,
     };
