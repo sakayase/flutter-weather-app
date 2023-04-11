@@ -13,10 +13,12 @@ class ForecastController {
     return forecast;
   }
 
-  Future<DateTime?> promptDate(BuildContext context) async {
+  Future<DateTime?> promptDate(
+      BuildContext context, DateTime selectedDate) async {
     return await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      currentDate: selectedDate,
+      initialDate: selectedDate,
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(
         Duration(days: Settings.nbForecastDay - 1),
