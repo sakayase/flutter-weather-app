@@ -1,4 +1,3 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/application/init.dart';
@@ -10,8 +9,7 @@ import 'package:weather_app/domain/states/autocomplete.dart';
 import 'package:weather_app/domain/states/forecast.dart';
 import 'package:weather_app/domain/states/location.dart';
 import 'package:weather_app/domain/states/weather.dart';
-import 'package:weather_app/presentation/style.dart';
-import 'package:weather_app/presentation/ui/landing_screen.dart';
+import 'package:weather_app/style.dart';
 
 void main() {
   init();
@@ -45,10 +43,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routeInformationParser: appRouter.defaultRouteParser(),
+        routerDelegate: appRouter.delegate(),
         title: 'Weather App',
         theme: theme,
-        home: const LandingScreen(),
       ),
     );
   }

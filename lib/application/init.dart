@@ -7,8 +7,10 @@ import 'package:weather_app/domain/controllers/forecast.dart';
 import 'package:weather_app/domain/controllers/location.dart';
 import 'package:weather_app/domain/controllers/locale.dart';
 import 'package:weather_app/domain/controllers/weather.dart';
+import 'package:weather_app/presentation/route/app_router.dart';
 
 GetIt getIt = GetIt.I;
+AppRouter appRouter = AppRouter();
 
 init() {
   WidgetsFlutterBinding.ensureInitialized();
