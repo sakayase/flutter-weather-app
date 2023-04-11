@@ -59,6 +59,7 @@ enum WindDirection {
   SW,
   WSW,
   W,
+  NW,
   WNW,
   NNW
 }
@@ -111,6 +112,9 @@ Widget getIconWindDirection(WindDirection windDirection, BuildContext context) {
       break;
     case WindDirection.NNW:
       rad = (4 / 3) * pi;
+      break;
+    case WindDirection.NW:
+      rad = (5 / 4) * pi;
       break;
     default:
       rad = 0;

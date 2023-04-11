@@ -57,6 +57,7 @@ const _$WindDirectionEnumMap = {
   WindDirection.SW: 'SW',
   WindDirection.WSW: 'WSW',
   WindDirection.W: 'W',
+  WindDirection.NW: 'NW',
   WindDirection.WNW: 'WNW',
   WindDirection.NNW: 'NNW',
 };
