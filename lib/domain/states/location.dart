@@ -23,5 +23,6 @@ class LocationState extends ChangeNotifier {
 
   setLocation(Location location) {
     this.location = location;
+    notifyListeners();
   }
 }
