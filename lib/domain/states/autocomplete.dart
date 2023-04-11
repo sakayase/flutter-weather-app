@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/data/api/autocomplete.dart';
 import 'package:weather_app/data/models/location.dart';
 import 'package:weather_app/domain/controllers/autocomplete.dart';
 
