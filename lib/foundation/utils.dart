@@ -23,6 +23,10 @@ String formatDate(DateTime date) {
   return DateFormat('dd/MM').format(date);
 }
 
+String formatToday(DateTime date) {
+  return DateFormat('EEE, MMM d').format(date);
+}
+
 String formatHour(DateTime date) {
   return DateFormat('HH:mm').format(date);
 }
