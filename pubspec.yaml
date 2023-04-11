@@ -19,6 +19,7 @@ dependencies:
   geolocator: ^9.0.2
   http: ^0.13.5
   intl: ^0.18.0
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:

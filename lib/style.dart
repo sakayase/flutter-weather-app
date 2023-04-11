@@ -2,17 +2,25 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme = FlexThemeData.light(
-  colors: const FlexSchemeColor(
-    primary: Colors.blue,
-    secondary: Colors.white,
-  ),
-).copyWith(
-  useMaterial3: true,
-  scaffoldBackgroundColor: const Color.fromARGB(255, 227, 243, 251),
-  cardTheme: const CardTheme(),
+    scheme: FlexScheme.bahamaBlue,
+    scaffoldBackground: Colors.transparent,
+    appBarBackground: Colors.transparent,
+    appBarElevation: 1,
+    subThemesData: const FlexSubThemesData(
+      navigationBarOpacity: 0,
+      navigationBarSelectedIconSchemeColor: SchemeColor.tertiary,
+      navigationBarSelectedLabelSchemeColor: SchemeColor.tertiary,
+      navigationBarUnselectedIconSchemeColor: SchemeColor.inversePrimary,
+      navigationBarUnselectedLabelSchemeColor: SchemeColor.inversePrimary,
+      navigationBarElevation: 2,
+    )).copyWith(
+  cardColor: Colors.transparent,
+  primaryTextTheme: Typography.material2021().white,
+  textTheme: Typography.material2021().white,
   inputDecorationTheme: const InputDecorationTheme(
-    fillColor: Color.fromARGB(255, 238, 249, 255),
-    filled: true,
+    hintStyle: TextStyle(color: Colors.white),
+    labelStyle: TextStyle(color: Colors.white),
+    prefixIconColor: Colors.white,
     border: InputBorder.none,
   ),
 );
