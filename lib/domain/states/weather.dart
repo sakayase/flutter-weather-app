@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/data/api/weather.dart';
 import 'package:weather_app/data/models/location.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/domain/controllers/weather.dart';
