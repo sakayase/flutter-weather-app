@@ -13,12 +13,6 @@ class Condition {
   ) {
     iconData = getIconData(code);
   }
-  // Condition({
-  //   required this.text,
-  //   required this.iconUrl,
-  //   required this.code,
-  //   required this.iconData,
-  // });
   String text;
   @JsonKey(name: 'icon')
   String iconUrl;
