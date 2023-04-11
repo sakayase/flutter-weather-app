@@ -40,9 +40,11 @@ app_data.IconData getConditionIconFromCode(int code) {
 }
 
 class NavigationView {
-  NavigationView({required this.view, required this.index});
+  NavigationView(
+      {required this.view, required this.index, required this.title});
   Widget view;
   int index;
+  String title;
 }
 
 enum WindDirection {
