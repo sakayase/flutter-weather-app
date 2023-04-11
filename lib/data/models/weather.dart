@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:weather_app/data/models/condition.dart';
 import 'package:weather_app/data/models/location.dart';
 
 part 'weather.g.dart';
@@ -7,6 +8,7 @@ part 'weather.g.dart';
 class Weather {
   Weather({
     this.location,
+    this.dateEpoch,
     required this.celciusTemp,
     required this.farenheitTemp,
     required this.mphWind,
@@ -14,11 +16,14 @@ class Weather {
     required this.windDirection,
     required this.celciusFeelsLike,
     required this.farenheitFeelsLike,
+    required this.condition,
     this.hours,
   });
 
   @JsonKey(fromJson: locationFromJsonIfNotNull)
   Location? location;
+  @JsonKey(name: 'time_epoch', readValue: readWeather)
+  int? dateEpoch;
   @JsonKey(name: 'temp_c', readValue: readWeather)
   double celciusTemp;
   @JsonKey(name: 'temp_f', readValue: readWeather)
@@ -33,6 +38,8 @@ class Weather {
   double celciusFeelsLike;
   @JsonKey(name: 'feelslike_f', readValue: readWeather)
   double farenheitFeelsLike;
+  @JsonKey(readValue: readWeather)
+  Condition condition;
   List<Weather>? hours;
 
   static readWeather(Map map, String string) {
