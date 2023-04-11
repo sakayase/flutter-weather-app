@@ -1,7 +1,8 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/foundation/errors.dart';
 
-class Locator {
+class LocationFinder {
+  Position? lastCheckedPosition;
   Future<bool> _testPermission() async {
     bool enabled;
     LocationPermission permission;
@@ -34,7 +35,9 @@ class Locator {
   Future<Position> getPosition() async {
     try {
       await _testPermission();
-      return await Geolocator.getCurrentPosition();
+      Position position = await Geolocator.getCurrentPosition();
+      lastCheckedPosition = position;
+      return position;
     } on LocationError catch (e) {
       rethrow;
     }
