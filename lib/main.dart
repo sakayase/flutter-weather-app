@@ -1,12 +1,16 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/application/init.dart';
-import 'package:weather_app/data/api/autocomplete.dart';
-import 'package:weather_app/data/api/weather.dart';
+import 'package:weather_app/domain/controllers/autocomplete.dart';
+import 'package:weather_app/domain/controllers/forecast.dart';
 import 'package:weather_app/domain/controllers/location.dart';
+import 'package:weather_app/domain/controllers/weather.dart';
 import 'package:weather_app/domain/states/autocomplete.dart';
+import 'package:weather_app/domain/states/forecast.dart';
 import 'package:weather_app/domain/states/location.dart';
 import 'package:weather_app/domain/states/weather.dart';
+import 'package:weather_app/presentation/style.dart';
 import 'package:weather_app/presentation/ui/landing_screen.dart';
 
 void main() {
@@ -21,26 +25,29 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
+          create: (_) => ForecastState(
+            controller: getIt.get<ForecastController>(),
+          ),
+        ),
+        ChangeNotifierProvider(
           create: (_) => AutocompleteState(
-            api: getIt.get<AutocompleteAPI>(),
+            controller: getIt.get<AutocompleteController>(),
           ),
         ),
         ChangeNotifierProvider<LocationState>(
           create: (_) => LocationState(
-            locationController: getIt.get<LocationController>(),
+            controller: getIt.get<LocationController>(),
           ),
         ),
         ChangeNotifierProvider<WeatherState>(
           create: (_) => WeatherState(
-            api: getIt.get<WeatherAPI>(),
+            controller: getIt.get<WeatherController>(),
           ),
         ),
       ],
       child: MaterialApp(
         title: 'Weather App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: theme,
         home: const LandingScreen(),
       ),
     );
