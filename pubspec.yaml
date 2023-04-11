@@ -15,9 +15,10 @@ dependencies:
   provider: ^6.0.5
   auto_route: ^6.0.5
   get_it: ^7.2.0
-  flex_color_scheme: ^5.1.0
+  flex_color_scheme: ^7.0.0
   geolocator: ^9.0.2
   http: ^0.13.5
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +27,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.3.3
   json_serializable: ^6.5.4
+  auto_route_generator: ^6.0.0
 
 flutter:
   uses-material-design: true
+  assets: 
+    - assets/weather/64x64/day/
+    - assets/weather/64x64/night/
