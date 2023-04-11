@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/foundation/utils.dart';
+import 'package:weather_app/data/models/icon_data.dart' as app_data;
 
 part 'condition.g.dart';
 
@@ -18,10 +18,10 @@ class Condition {
   String iconUrl;
   int code;
   @JsonKey(includeFromJson: false, includeToJson: false)
-  IconData? iconData;
+  app_data.IconData? iconData;
 
-  getIconData(int code) {
-    getConditionIconFromCode(code);
+  app_data.IconData getIconData(int code) {
+    return getConditionIconFromCode(code);
   }
 
   factory Condition.fromJson(Map<String, dynamic> json) =>
