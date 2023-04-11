@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<LocationState>(
           create: (_) => LocationState(
-            locationFinder: getIt.get<LocationController>(),
+            locationController: getIt.get<LocationController>(),
           ),
         ),
         ChangeNotifierProvider<WeatherState>(
