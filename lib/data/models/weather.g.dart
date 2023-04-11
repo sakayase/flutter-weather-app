@@ -14,7 +14,8 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
       farenheitTemp: (Weather.readWeather(json, 'temp_f') as num).toDouble(),
       mphWind: (Weather.readWeather(json, 'wind_mph') as num).toDouble(),
       kphWind: (Weather.readWeather(json, 'wind_kph') as num).toDouble(),
-      windDirection: Weather.readWeather(json, 'wind_dir') as String,
+      windDirection: $enumDecode(
+          _$WindDirectionEnumMap, Weather.readWeather(json, 'wind_dir')),
       celciusFeelsLike:
           (Weather.readWeather(json, 'feelslike_c') as num).toDouble(),
       farenheitFeelsLike:
@@ -34,10 +35,28 @@ Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
       'temp_f': instance.farenheitTemp,
       'wind_mph': instance.mphWind,
       'wind_kph': instance.kphWind,
-      'wind_dir': instance.windDirection,
+      'wind_dir': _$WindDirectionEnumMap[instance.windDirection]!,
       'feelslike_c': instance.celciusFeelsLike,
       'feelslike_f': instance.farenheitFeelsLike,
       'condition': instance.condition,
       'is_day': instance.isDay,
       'hours': instance.hours,
     };
+
+const _$WindDirectionEnumMap = {
+  WindDirection.N: 'N',
+  WindDirection.NNE: 'NNE',
+  WindDirection.NE: 'NE',
+  WindDirection.ENE: 'ENE',
+  WindDirection.E: 'E',
+  WindDirection.ESE: 'ESE',
+  WindDirection.SE: 'SE',
+  WindDirection.SSE: 'SSE',
+  WindDirection.S: 'S',
+  WindDirection.SSW: 'SSW',
+  WindDirection.SW: 'SW',
+  WindDirection.WSW: 'WSW',
+  WindDirection.W: 'W',
+  WindDirection.WNW: 'WNW',
+  WindDirection.NNW: 'NNW',
+};

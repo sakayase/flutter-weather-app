@@ -35,7 +35,7 @@ class Weather {
   @JsonKey(name: 'wind_kph', readValue: readWeather)
   double kphWind;
   @JsonKey(name: 'wind_dir', readValue: readWeather)
-  String windDirection;
+  WindDirection windDirection;
   @JsonKey(name: 'feelslike_c', readValue: readWeather)
   double celciusFeelsLike;
   @JsonKey(name: 'feelslike_f', readValue: readWeather)
