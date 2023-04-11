@@ -9,7 +9,7 @@ GetIt getIt = GetIt.I;
 init() {
   WidgetsFlutterBinding.ensureInitialized();
   checkLocale();
-  getIt.registerSingleton<LocationFinder>(LocationFinder());
+  getIt.registerSingleton<LocationController>(LocationController());
   getIt.registerSingleton<WeatherAPI>(WeatherAPI());
 }
 

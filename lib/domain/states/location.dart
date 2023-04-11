@@ -8,7 +8,7 @@ class LocationState extends ChangeNotifier {
     required this.locationFinder,
   });
 
-  LocationFinder locationFinder;
+  LocationController locationFinder;
 
   Location? location;
 
