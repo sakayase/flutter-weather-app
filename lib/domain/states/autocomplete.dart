@@ -6,11 +6,18 @@ class AutocompleteState extends ChangeNotifier {
   AutocompleteState({
     required this.api,
   });
-  List<Location> suggestions = [];
   AutocompleteAPI api;
+  List<Location> suggestions = [];
+  Location? selectedLocation;
 
   setSuggestions(List<Location>? suggestions) {
     this.suggestions = suggestions ?? [];
+    notifyListeners();
+  }
+
+  setSelectedLocation(Location? location) {
+    selectedLocation = location;
+    suggestions = [];
     notifyListeners();
   }
 
