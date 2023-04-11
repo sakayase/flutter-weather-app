@@ -8,12 +8,12 @@ GetIt getIt = GetIt.I;
 
 init() {
   WidgetsFlutterBinding.ensureInitialized();
-  getLocale();
+  checkLocale();
   getIt.registerSingleton<LocationFinder>(LocationFinder());
   getIt.registerSingleton<WeatherAPI>(WeatherAPI());
 }
 
-getLocale() {
+checkLocale() {
   final List<Locale> systemLocales = WidgetsBinding.instance.window.locales;
   getIt.registerSingleton<SystemLocale>(
       SystemLocale(locale: systemLocales.first));
