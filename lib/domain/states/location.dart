@@ -19,7 +19,6 @@ class LocationState extends ChangeNotifier {
       lon: position.longitude,
     );
     setLocation(location);
-    notifyListeners();
   }
 
   setLocation(Location location) {
