@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/application/init.dart';
 import 'package:weather_app/data/api/weather.dart';
-import 'package:weather_app/domain/location.dart';
+import 'package:weather_app/domain/controllers/location.dart';
 import 'package:weather_app/domain/states/location.dart';
 import 'package:weather_app/domain/states/weather.dart';
 import 'package:weather_app/presentation/ui/landing_screen.dart';

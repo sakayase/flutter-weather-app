@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/data/models/location.dart';
-import 'package:weather_app/domain/location.dart';
+import 'package:weather_app/domain/controllers/location.dart';
 
 class LocationState extends ChangeNotifier {
   LocationState({

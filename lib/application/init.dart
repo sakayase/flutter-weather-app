@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/data/api/weather.dart';
-import 'package:weather_app/domain/location.dart';
-import 'package:weather_app/domain/locale.dart';
+import 'package:weather_app/domain/controllers/location.dart';
+import 'package:weather_app/domain/controllers/locale.dart';
 
 GetIt getIt = GetIt.I;
 
