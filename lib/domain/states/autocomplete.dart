@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/data/api/autocomplete.dart';
 import 'package:weather_app/data/models/location.dart';
+import 'package:weather_app/domain/controllers/autocomplete.dart';
 
 class AutocompleteState extends ChangeNotifier {
   AutocompleteState({
-    required this.api,
+    required this.controller,
   });
-  AutocompleteAPI api;
+  AutocompleteController controller;
   List<Location> suggestions = [];
   Location? selectedLocation;
 
@@ -22,7 +23,7 @@ class AutocompleteState extends ChangeNotifier {
   }
 
   Future<List<Location>> getSuggestionsFromPlaceName(String placeName) async {
-    setSuggestions(await api.getSuggestionsByPlaceName(placeName));
+    setSuggestions(await controller.getSuggestionsFromPlaceName(placeName));
     return suggestions;
   }
 }

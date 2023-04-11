@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/data/api/weather.dart';
 import 'package:weather_app/data/models/forecast.dart';
 import 'package:weather_app/data/models/location.dart';
+import 'package:weather_app/domain/controllers/forecast.dart';
+import 'package:weather_app/domain/controllers/weather.dart';
 import 'package:weather_app/foundation/settings.dart';
 
 class ForecastState with ChangeNotifier {
   ForecastState({
-    required this.api,
+    required this.controller,
   });
-  WeatherAPI api;
+  ForecastController controller;
   Forecast? forecast;
   DateTime selectedDate = DateTime.now();
 
@@ -23,18 +25,11 @@ class ForecastState with ChangeNotifier {
   }
 
   Future<void> getForecast(Location location) async {
-    setForecast(await api.getDaysForecast(location));
+    setForecast(await controller.getDaysForecast(location));
   }
 
   Future<DateTime?> promptDate(BuildContext context) async {
-    DateTime? date = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(
-        Duration(days: Settings.nbForecastDay - 1),
-      ),
-    );
+    DateTime? date = await controller.promptDate(context);
     setSelectedDate(date ?? selectedDate);
     return date;
   }

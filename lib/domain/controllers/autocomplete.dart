@@ -5,7 +5,7 @@ import 'package:weather_app/data/models/location.dart';
 class AutocompleteController {
   AutocompleteAPI api = getIt.get<AutocompleteAPI>();
 
-  Future<List<Location>?> getSuggestions(String placeName) async {
+  Future<List<Location>?> getSuggestionsFromPlaceName(String placeName) async {
     List<Location> suggestions;
     suggestions = await api.getSuggestionsByPlaceName(placeName) ?? [];
     return suggestions;
