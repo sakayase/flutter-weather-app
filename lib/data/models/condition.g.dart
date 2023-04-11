@@ -8,12 +8,12 @@ part of 'condition.dart';
 
 Condition _$ConditionFromJson(Map<String, dynamic> json) => Condition(
       text: json['text'] as String,
-      iconUrl: json['iconUrl'] as String,
+      iconUrl: json['icon'] as String,
       code: json['code'] as int,
     );
 
 Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'text': instance.text,
-      'iconUrl': instance.iconUrl,
+      'icon': instance.iconUrl,
       'code': instance.code,
     };

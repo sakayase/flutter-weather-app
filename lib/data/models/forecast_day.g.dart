@@ -16,7 +16,9 @@ ForecastDay _$ForecastDayFromJson(Map<String, dynamic> json) => ForecastDay(
       avgTempF: (ForecastDay.readDay(json, 'avgtemp_f') as num).toDouble(),
       maxWindKph: (ForecastDay.readDay(json, 'maxwind_kph') as num).toDouble(),
       maxWindMph: (ForecastDay.readDay(json, 'maxwind_mph') as num).toDouble(),
-      hours: (json['hours'] as List<dynamic>?)
+      condition: Condition.fromJson(
+          ForecastDay.readDay(json, 'condition') as Map<String, dynamic>),
+      hour: (json['hour'] as List<dynamic>?)
           ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -32,5 +34,6 @@ Map<String, dynamic> _$ForecastDayToJson(ForecastDay instance) =>
       'avgtemp_f': instance.avgTempF,
       'maxwind_kph': instance.maxWindKph,
       'maxwind_mph': instance.maxWindMph,
-      'hours': instance.hours,
+      'condition': instance.condition,
+      'hour': instance.hour,
     };

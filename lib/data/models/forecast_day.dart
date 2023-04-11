@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:weather_app/data/models/condition.dart';
 import 'package:weather_app/data/models/weather.dart';
 
 part 'forecast_day.g.dart';
@@ -15,7 +16,8 @@ class ForecastDay {
     required this.avgTempF,
     required this.maxWindKph,
     required this.maxWindMph,
-    this.hours,
+    required this.condition,
+    this.hour,
   });
 
   @JsonKey(name: 'date_epoch')
@@ -36,8 +38,10 @@ class ForecastDay {
   double maxWindKph;
   @JsonKey(name: 'maxwind_mph', readValue: readDay)
   double maxWindMph;
+  @JsonKey(readValue: readDay)
+  Condition condition;
 
-  List<Weather>? hours;
+  List<Weather>? hour;
 
   static readDay(Map map, String string) {
     return map['day'][string];
