@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/domain/states/locale.dart';
+import 'package:weather_app/domain/locale.dart';
 
 import '../application/init.dart';
 

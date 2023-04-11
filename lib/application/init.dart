@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/data/api/weather.dart';
 import 'package:weather_app/domain/location.dart';
-import 'package:weather_app/domain/states/locale.dart';
+import 'package:weather_app/domain/locale.dart';
 
 GetIt getIt = GetIt.I;
 
