@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:weather_app/data/models/condition_icon.dart';
+import 'package:weather_app/data/models/icon_data.dart';
 import 'package:weather_app/json_icons.dart';
 
 class Settings {
@@ -8,7 +8,7 @@ class Settings {
   static int nbForecastDay = 7;
 
   static List iconMapList = (jsonDecode(jsonIconsArray) as List);
-  static List<ConditionIcon> iconList = iconMapList
-      .map((e) => ConditionIcon.fromJson(e as Map<String, dynamic>))
+  static List<IconData> iconList = iconMapList
+      .map((e) => IconData.fromJson(e as Map<String, dynamic>))
       .toList();
 }
