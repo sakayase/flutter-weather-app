@@ -6,7 +6,7 @@ part 'weather.g.dart';
 @JsonSerializable()
 class Weather {
   Weather({
-    required this.location,
+    this.location,
     required this.celciusTemp,
     required this.farenheitTemp,
     required this.mphWind,
@@ -17,23 +17,37 @@ class Weather {
     this.hours,
   });
 
-  @JsonKey(fromJson: Location.fromJson)
-  Location location;
-  @JsonKey(name: 'c_temp')
-  String celciusTemp;
-  @JsonKey(name: 'f_temp')
-  String farenheitTemp;
-  @JsonKey(name: 'wind_mph')
-  String mphWind;
-  @JsonKey(name: 'wind_kph')
-  String kphWind;
-  @JsonKey(name: 'wind_dir')
+  @JsonKey(fromJson: locationFromJsonIfNotNull)
+  Location? location;
+  @JsonKey(name: 'temp_c', readValue: readWeather)
+  double celciusTemp;
+  @JsonKey(name: 'temp_f', readValue: readWeather)
+  double farenheitTemp;
+  @JsonKey(name: 'wind_mph', readValue: readWeather)
+  double mphWind;
+  @JsonKey(name: 'wind_kph', readValue: readWeather)
+  double kphWind;
+  @JsonKey(name: 'wind_dir', readValue: readWeather)
   String windDirection;
-  @JsonKey(name: 'feelslike_c')
-  String celciusFeelsLike;
-  @JsonKey(name: 'feelslike_f')
-  String farenheitFeelsLike;
+  @JsonKey(name: 'feelslike_c', readValue: readWeather)
+  double celciusFeelsLike;
+  @JsonKey(name: 'feelslike_f', readValue: readWeather)
+  double farenheitFeelsLike;
   List<Weather>? hours;
+
+  static readWeather(Map map, String string) {
+    if (map['current'] != null) {
+      return map['current'][string];
+    }
+    return map[string];
+  }
+
+  static Location? locationFromJsonIfNotNull(Map<String, dynamic>? json) {
+    if (json != null) {
+      return Location.fromJson(json);
+    }
+    return null;
+  }
 
   factory Weather.fromJson(Map<String, dynamic> json) =>
       _$WeatherFromJson(json);

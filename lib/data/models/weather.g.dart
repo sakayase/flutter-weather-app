@@ -7,14 +7,17 @@ part of 'weather.dart';
 // **************************************************************************
 
 Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
-      location: Location.fromJson(json['location'] as Map<String, dynamic>),
-      celciusTemp: json['c_temp'] as String,
-      farenheitTemp: json['f_temp'] as String,
-      mphWind: json['wind_mph'] as String,
-      kphWind: json['wind_kph'] as String,
-      windDirection: json['wind_dir'] as String,
-      celciusFeelsLike: json['feelslike_c'] as String,
-      farenheitFeelsLike: json['feelslike_f'] as String,
+      location: Weather.locationFromJsonIfNotNull(
+          json['location'] as Map<String, dynamic>?),
+      celciusTemp: (Weather.readWeather(json, 'temp_c') as num).toDouble(),
+      farenheitTemp: (Weather.readWeather(json, 'temp_f') as num).toDouble(),
+      mphWind: (Weather.readWeather(json, 'wind_mph') as num).toDouble(),
+      kphWind: (Weather.readWeather(json, 'wind_kph') as num).toDouble(),
+      windDirection: Weather.readWeather(json, 'wind_dir') as String,
+      celciusFeelsLike:
+          (Weather.readWeather(json, 'feelslike_c') as num).toDouble(),
+      farenheitFeelsLike:
+          (Weather.readWeather(json, 'feelslike_f') as num).toDouble(),
       hours: (json['hours'] as List<dynamic>?)
           ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -22,8 +25,8 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => Weather(
 
 Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
       'location': instance.location,
-      'c_temp': instance.celciusTemp,
-      'f_temp': instance.farenheitTemp,
+      'temp_c': instance.celciusTemp,
+      'temp_f': instance.farenheitTemp,
       'wind_mph': instance.mphWind,
       'wind_kph': instance.kphWind,
       'wind_dir': instance.windDirection,

@@ -10,7 +10,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       name: json['name'] as String?,
       region: json['region'] as String?,
       country: json['country'] as String?,
-      localTimeEpoch: json['localtime_epoch'] as String?,
+      localTimeEpoch: json['localtime_epoch'] as int?,
       lat: (json['lat'] as num).toDouble(),
       lon: (json['lon'] as num).toDouble(),
     );

@@ -18,7 +18,7 @@ class Location {
   String? region;
   String? country;
   @JsonKey(name: 'localtime_epoch')
-  String? localTimeEpoch;
+  int? localTimeEpoch;
   double lat;
   double lon;
 
