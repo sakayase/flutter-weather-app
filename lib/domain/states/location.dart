@@ -5,15 +5,15 @@ import 'package:weather_app/domain/controllers/location.dart';
 
 class LocationState extends ChangeNotifier {
   LocationState({
-    required this.locationFinder,
+    required this.locationController,
   });
 
-  LocationController locationFinder;
+  LocationController locationController;
 
   Location? location;
 
   findLocation() async {
-    Position position = await locationFinder.getPosition();
+    Position position = await locationController.getPosition();
     Location location = Location(
       lat: position.latitude,
       lon: position.longitude,
