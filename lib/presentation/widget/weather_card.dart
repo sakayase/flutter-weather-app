@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/data/models/weather.dart';
+import 'package:weather_app/domain/states/locale.dart';
 import 'package:weather_app/foundation/settings.dart';
 import 'package:weather_app/foundation/utils.dart';
 
@@ -95,7 +97,7 @@ class TemperatureCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              '${weather.celciusTemp}°C',
+              weather.getTemp((context.watch<LocalisationState>().celsius)),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             Row(
@@ -105,7 +107,8 @@ class TemperatureCard extends StatelessWidget {
                   'Ressenti : ',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Text('${weather.celciusFeelsLike}°C'),
+                Text(weather.getFeelsLiks(
+                    (context.watch<LocalisationState>().celsius))),
               ],
             ),
           ],
@@ -142,7 +145,8 @@ class WindCard extends StatelessWidget {
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
-                Text('${weather.kphWind} km/h'),
+                Text(weather
+                    .getWind((context.watch<LocalisationState>().metric))),
               ],
             ),
             getIconWindDirection(weather.windDirection, context),

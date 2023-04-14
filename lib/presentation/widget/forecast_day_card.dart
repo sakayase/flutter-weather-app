@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/data/models/forecast_day.dart';
 import 'package:weather_app/data/models/weather.dart';
+import 'package:weather_app/domain/states/locale.dart';
 import 'package:weather_app/foundation/settings.dart';
 import 'package:weather_app/foundation/utils.dart';
 
@@ -53,7 +55,8 @@ class ForecastDayCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${day.avgTempC}°C',
+                      day.getAvgTemp(
+                          context.watch<LocalisationState>().celsius),
                     ),
                   ),
                 ],
@@ -76,7 +79,8 @@ class ForecastDayCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('${day.minTempC}°C'),
+                    child: Text(day.getMinTemp(
+                        (context.watch<LocalisationState>().celsius))),
                   ),
                 ],
               ),
@@ -89,7 +93,8 @@ class ForecastDayCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('${day.maxTempC}°C'),
+                    child: Text(day.getMaxTemp(
+                        (context.watch<LocalisationState>().celsius))),
                   ),
                 ],
               ),
@@ -154,7 +159,8 @@ class DisplayHours extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('${hour.celciusTemp.toString()}°C'),
+                    child: Text(hour
+                        .getTemp((context.watch<LocalisationState>().celsius))),
                   ),
                 ],
               ),
