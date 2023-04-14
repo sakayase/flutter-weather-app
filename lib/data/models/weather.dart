@@ -64,4 +64,16 @@ class Weather {
       _$WeatherFromJson(json);
 
   Map<String, dynamic> toJson() => _$WeatherToJson(this);
+
+  getTemp(bool celsius) {
+    return celsius ? '$celciusTemp°C' : '$farenheitTemp°F';
+  }
+
+  getFeelsLiks(bool celsius) {
+    return celsius ? '$celciusFeelsLike°C' : '$farenheitFeelsLike°F';
+  }
+
+  getWind(bool metric) {
+    return metric ? '$kphWind k/h' : '$mphWind mph';
+  }
 }

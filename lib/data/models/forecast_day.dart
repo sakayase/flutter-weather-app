@@ -51,4 +51,20 @@ class ForecastDay {
       _$ForecastDayFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForecastDayToJson(this);
+
+  getAvgTemp(bool celsius) {
+    return celsius ? '$avgTempC°C' : '$avgTempF°F';
+  }
+
+  getMaxTemp(bool celsius) {
+    return celsius ? '$maxTempC°C' : '$maxTempF°F';
+  }
+
+  getMinTemp(bool celsius) {
+    return celsius ? '$minTempC°C' : '$minTempF°F';
+  }
+
+  getMaxWind(bool metric) {
+    return metric ? '$maxWindKph kph' : '$maxWindMph mph';
+  }
 }
