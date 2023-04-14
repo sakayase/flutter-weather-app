@@ -3,33 +3,40 @@ import 'package:weather_app/foundation/errors.dart';
 
 class LocationController {
   Position? lastCheckedPosition;
-  Future<bool> _testPermission() async {
+
+  Future _testPermission() async {
     bool enabled;
     LocationPermission permission;
-
-    enabled = await Geolocator.isLocationServiceEnabled();
-    if (!enabled) {
-      return Future.error(
-        LocationError(
+    try {
+      enabled = await Geolocator.isLocationServiceEnabled();
+      if (!enabled) {
+        throw LocationError(
           message: 'Location services are disabled.',
-        ),
-      );
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error(
-          LocationError(
-            message: 'Location permissions are denied',
-            permission: permission,
-          ),
+          permission: LocationPermission.unableToDetermine,
         );
       }
-    }
 
-    return true;
+      permission = await Geolocator.checkPermission();
+      print(permission);
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if ((permission == LocationPermission.denied) ||
+            (permission == LocationPermission.deniedForever)) {
+          throw LocationError(
+            message: 'Location permissions are denied',
+            permission: permission,
+          );
+        }
+      }
+      if (permission == LocationPermission.deniedForever) {
+        throw LocationError(
+          message: 'Location permissions are permanently denied',
+          permission: permission,
+        );
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<Position> getPosition() async {
@@ -38,7 +45,7 @@ class LocationController {
       Position position = await Geolocator.getCurrentPosition();
       lastCheckedPosition = position;
       return position;
-    } on LocationError catch (e) {
+    } catch (e) {
       rethrow;
     }
   }
