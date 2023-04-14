@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/domain/states/location.dart';
 import 'package:weather_app/foundation/utils.dart';
 import 'package:weather_app/presentation/ui/forecast_page.dart';
+import 'package:weather_app/presentation/ui/settings_page.dart';
 import 'package:weather_app/presentation/ui/weather_page.dart';
 
 @RoutePage()
@@ -17,7 +18,8 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   List<NavigationView> allPagesView = [
     NavigationView(view: const WeatherPage(), index: 0, title: 'Météo'),
-    NavigationView(view: const ForecastPage(), index: 1, title: 'Prévisions')
+    NavigationView(view: const ForecastPage(), index: 1, title: 'Prévisions'),
+    NavigationView(view: const SettingsPage(), index: 2, title: 'Paramètres'),
   ];
   int selectedIndex = 0;
 
@@ -53,6 +55,8 @@ class _LandingScreenState extends State<LandingScreen> {
             NavigationDestination(
                 icon: const Icon(Icons.calendar_month),
                 label: allPagesView[1].title),
+            NavigationDestination(
+                icon: const Icon(Icons.settings), label: allPagesView[2].title)
           ],
           onDestinationSelected: (int newIndex) {
             setState(() {
