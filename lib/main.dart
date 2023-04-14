@@ -7,6 +7,7 @@ import 'package:weather_app/domain/controllers/location.dart';
 import 'package:weather_app/domain/controllers/weather.dart';
 import 'package:weather_app/domain/states/autocomplete.dart';
 import 'package:weather_app/domain/states/forecast.dart';
+import 'package:weather_app/domain/states/locale.dart';
 import 'package:weather_app/domain/states/location.dart';
 import 'package:weather_app/domain/states/weather.dart';
 import 'package:weather_app/style.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
             controller: getIt.get<WeatherController>(),
           ),
         ),
+        ChangeNotifierProvider<LocalisationState>(
+          create: (_) => getIt.get<LocalisationState>(),
+        )
       ],
       child: MaterialApp.router(
         routeInformationParser: appRouter.defaultRouteParser(),

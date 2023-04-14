@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/application/init.dart';
 import 'package:weather_app/data/models/icon_data.dart' as app_data;
-
-import 'package:weather_app/domain/controllers/locale.dart';
+import 'package:weather_app/domain/states/locale.dart';
 import 'package:weather_app/foundation/settings.dart';
 
 DateTime dateTimeFromUnixTime(int unixTime) {
@@ -15,7 +14,7 @@ DateTime dateTimeFromUnixTime(int unixTime) {
 }
 
 Locale getLocale() {
-  SystemLocale systemLocale = getIt.get<SystemLocale>();
+  LocalisationState systemLocale = getIt.get<LocalisationState>();
   return systemLocale.locale;
 }
 
