@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/data/models/forecast_day.dart';
+import 'package:weather_app/data/models/location.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/domain/states/locale.dart';
 import 'package:weather_app/foundation/settings.dart';
@@ -11,19 +12,41 @@ class ForecastDayCard extends StatelessWidget {
     super.key,
     required this.date,
     required this.day,
+    required this.location,
   });
 
   final DateTime date;
   final ForecastDay day;
+  final Location? location;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text(
-          formatDate(date),
-          style: Theme.of(context).textTheme.titleLarge,
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                location != null
+                    ? ConstrainedBox(
+                        constraints: BoxConstraints.loose(const Size(150, 50)),
+                        child: Text(
+                          location!.name ?? '',
+                          style: Theme.of(context).textTheme.titleLarge,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                Text(
+                  formatToday(DateTime.now()),
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ],
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),

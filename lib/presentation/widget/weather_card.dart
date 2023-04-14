@@ -20,15 +20,20 @@ class WeatherCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Card(
-                child: SizedBox(
-                  height: 50,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       weather.location != null
-                          ? Text(
-                              weather.location!.name ?? '',
-                              style: Theme.of(context).textTheme.titleLarge,
+                          ? ConstrainedBox(
+                              constraints:
+                                  BoxConstraints.loose(const Size(200, 50)),
+                              child: Text(
+                                weather.location!.name ?? '',
+                                style: Theme.of(context).textTheme.titleLarge,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             )
                           : const SizedBox.shrink(),
                       Text(

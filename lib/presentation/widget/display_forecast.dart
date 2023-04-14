@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/data/models/forecast.dart';
 import 'package:weather_app/data/models/forecast_day.dart';
+import 'package:weather_app/data/models/location.dart';
 import 'package:weather_app/domain/states/forecast.dart';
 import 'package:weather_app/foundation/utils.dart';
 import 'package:weather_app/presentation/widget/forecast_day_card.dart';
@@ -26,6 +27,7 @@ class DisplayForecast extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: DisplayDay(
               day: days[index],
+              location: forecast.location,
             ),
           );
         },
@@ -36,8 +38,10 @@ class DisplayForecast extends StatelessWidget {
 }
 
 class DisplayDay extends StatelessWidget {
-  const DisplayDay({Key? key, required this.day}) : super(key: key);
+  const DisplayDay({Key? key, required this.day, required this.location})
+      : super(key: key);
   final ForecastDay day;
+  final Location? location;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +56,7 @@ class DisplayDay extends StatelessWidget {
             SizedBox(
               width: 250,
               height: 400,
-              child: ForecastDayCard(date: date, day: day),
+              child: ForecastDayCard(date: date, day: day, location: location),
             ),
             Expanded(
               child: DisplayHours(hours: day.hour ?? []),
